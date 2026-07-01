@@ -1,8 +1,58 @@
 @import 'tailwindcss';
 
-body {
-  margin: 0;
-  background-color: white;
-  font-family: Arial, sans-serif;
-  color: #333333;
+@theme {
+  --color-brand: #29B6F6;
+  --color-brand-hover: #0288D1;
+  --color-bg-primary: #F3F8FC;
+  --color-bg-sidebar: #E8F4FC;
+  --color-border-primary: #DCEEFA;
+  --color-text-primary: #0F2C3E;
+  --color-text-secondary: #546E7A;
+}
+
+@utility vms-layout {
+  @apply min-h-screen bg-[var(--color-bg-primary)] text-[var(--color-text-primary)] flex flex-col md:flex-row font-sans;
+}
+
+@utility vms-sidebar {
+  @apply w-full md:w-64 bg-[var(--color-bg-sidebar)] text-[var(--color-text-primary)] border-b md:border-b-0 md:border-r border-[var(--color-border-primary)] flex flex-col;
+}
+
+@utility vms-card {
+  @apply bg-white border border-[var(--color-border-primary)] p-6 rounded-xl shadow-sm text-[var(--color-text-primary)];
+}
+
+@utility vms-btn-primary {
+  @apply w-full bg-[var(--color-brand)] hover:bg-[var(--color-brand-hover)] text-white font-semibold py-2 px-4 rounded transition-colors;
+}
+
+@utility vms-btn-secondary {
+  @apply w-full bg-[var(--color-bg-primary)] hover:bg-[var(--color-border-primary)] text-[var(--color-text-primary)] border border-[var(--color-border-primary)] font-semibold py-2 px-4 rounded transition-colors;
+}
+
+@utility vms-input {
+  @apply w-full bg-[var(--color-bg-primary)] border border-[var(--color-border-primary)] rounded px-3 py-2 text-[var(--color-text-primary)] focus:outline-none focus:border-[var(--color-brand)];
+}
+
+@utility vms-nav-btn {
+  @apply w-full flex items-center space-x-3 px-4 py-3 rounded-lg text-sm font-semibold transition-all duration-200;
+}
+
+/* Animations for Modal open/close */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { transform: translateY(15px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-slideUp {
+  animation: slideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
